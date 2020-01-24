@@ -25,18 +25,18 @@ else
     LANG=C
 fi
 
-if [ -f /usr/bin/emacs -o -f /usr/local/bin/emacs ] ; then
+if [ "`type -t emacs`" == 'file' ] ; then
     EDITOR=emacsclient
-    if [ -f /usr/bin/mg -o -f /usr/local/bin/mg ] ; then
+    if [ "`type -t mg`" == 'file' ] ; then
 	ALTERNATE_EDITOR=mg
-    elif [ -f /usr/bin/zile -o -f /usr/local/bin/zile ] ; then
+    elif [ "`type -t zile`" == 'file' ] ; then
 	ALTERNATE_EDITOR=zile
     else
 	ALTERNATE_EDITOR=emacs
     fi
-elif [ -f /usr/bin/mg -o -f /usr/local/bin/mg ] ; then
+elif [ "`type -t mg`" == 'file' ] ; then
     EDITOR=mg
-elif [ -f /usr/bin/zile -o -f /usr/local/bin/zile ] ; then
+elif [ "`type -t zile`" == 'file' ] ; then
     EDITOR=zile
 fi
 
