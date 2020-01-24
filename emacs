@@ -5,58 +5,95 @@
 ;; (_)___|_| |_| |_|\__,_|\___|___/
 ;;
 
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl
+    (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and
+  ;; MELPA Stable as desired
+  (add-to-list 'package-archives
+	       (cons "melpa"
+		     (concat proto "://melpa.org/packages/")) t)
+  (add-to-list 'package-archives
+	       (cons "melpa-stable"
+		     (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives
+		 (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
+
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(diff-switches "-u")
- '(electric-indent-mode t)
  '(electric-pair-mode t)
- '(package-archives
-   (quote
-    (("gnu"       . "http://elpa.gnu.org/packages/")
-     ("melpa"     . "https://melpa.org/packages/")
-     ("marmalade" . "http://marmalade-repo.org/packages/"))))
- '(package-enable-at-startup t)
+ '(electric-quote-mode nil)
+ '(kill-do-not-save-duplicates t)
+ '(line-number-mode t)
+ '(ls-lisp-dirs-first t)
+ '(ls-lisp-ignore-case nil)
+ '(ls-lisp-use-string-collate nil)
+ '(org-startup-indented t)
  '(package-selected-packages (quote (apache-mode
+				     beacon
+				     cfengine-mode
+				     color-theme-modern
+				     diminish
 				     helm
-				     helm-ebdb
+				     htmlize
 				     json-mode
 				     magit
 				     markdown-mode
 				     markdown-preview-mode
+				     mmm-jinja2
+				     salt-mode
 				     ssh-config-mode
 				     terraform-mode
 				     try
+				     use-package
 				     yaml-mode
 				     yasnippet
 				     yasnippet-snippets)))
+ '(require-final-newline t)
  '(safe-local-variable-values (quote ((c-file-style . stroustrup))))
- '(ssh-config-mode-indent 4)
  '(show-paren-mode t)
- '(tramp-default-method "ssh")
+ '(ssh-config-mode-indent 4)
  '(transient-mark-mode t)
  '(user-full-name "Jeff Carlson")
- '(user-mail-address "jeff ultimateevil org")
+ '(user-mail-address "jdcarlson@mednet.ucla.edu")
  '(visible-bell t))
 
-;(require 'helm)
-(require 'helm-config)
-(helm-mode 1)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Cascadia Code"
+		:foundry "outline"
+		:slant normal
+		:weight normal
+		:height 120
+		:width normal)))))
 
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
-(add-hook 'yaml-mode-hook
-	  '(lambda ()
-	     (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+(put 'narrow-to-region 'disabled nil)
+(fset 'yes-or-no-p 'y-or-n-p)
+(scroll-bar-mode 0)
 
 (add-hook 'bibtex-mode-hook     'hs-minor-mode)
 (add-hook 'c-mode-common-hook   'hs-minor-mode)
@@ -76,42 +113,114 @@
 (add-hook 'tcl-mode-hook        'hs-minor-mode)
 (add-hook 'vhdl-mode-hook       'hs-minor-mode)
 
-(autoload 'ssh-config-mode "ssh-config-mode" t)
-(add-to-list 'auto-mode-alist '(".ssh/config\\'"  . ssh-config-mode))
-(add-to-list 'auto-mode-alist '("sshd?_config\\'" . ssh-config-mode))
-(add-hook 'ssh-config-mode-hook 'turn-on-font-lock)
-
 (require 'tramp)
 (setq tramp-default-method "ssh")
 (add-to-list 'tramp-default-proxies-alist
 	     '(nil "\\`root\\'" "/ssh:%h:"))
 (add-to-list 'tramp-default-proxies-alist
 	     '((regexp-quote (system-name)) nil nil))
-(tramp-set-completion-function "ssh"
-			       '((tramp-parse-shosts  "/etc/ssh/ssh_known_hosts")
-				 (tramp-parse-shosts  "~/.ssh/known_hosts")
-				 (tramp-parse-sconfig "/etc/ssh/ssh_config")
-				 (tramp-parse-sconfig "~/.ssh/config")
-				 (tramp-parse-hosts   "/etc/hosts")))
-
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/color-theme/")
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-classic)
-
-(fset 'yes-or-no-p 'y-or-n-p)
+(tramp-set-completion-function
+ "ssh" '((tramp-parse-shosts  "/etc/ssh/ssh_known_hosts")
+	 (tramp-parse-shosts  "~/.ssh/known_hosts")
+	 (tramp-parse-sconfig "/etc/ssh/ssh_config")
+	 (tramp-parse-sconfig "~/.ssh/config")
+	 (tramp-parse-hosts   "/etc/hosts")))
 
 (add-to-list 'auto-mode-alist '("/bash-fc" . shell-script-mode))
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 (add-hook 'mail-mode-hook 'turn-on-auto-fill)
 
-(autoload 'cfengine-mode "cfengine" "cfengine editing" t)
-(add-to-list 'auto-mode-alist '("\\.cf\\'" . cfengine-mode))
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
-(add-to-list 'load-path "~/.elisp")
-(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.13.0")
-(require 'yasnippet)
-(yas-global-mode 1)
+(eval-when-compile
+  (require 'use-package))
+
+(use-package apache-mode
+  :ensure t)
+
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode t))
+
+(use-package cfengine
+  ;; https://raw.github.com/cfengine/core/master/contrib/cfengine.el
+  ;; Installs automatically with cfengine package
+  :config
+  (autoload 'cfengine-mode "cfengine" "cfengine editing" t)
+  (add-to-list 'load-path "~/.emacs.d/lisp/")
+  (add-to-list 'auto-mode-alist '("\\.cf\\'" . cfengine-mode)))
+
+(use-package color-theme-modern
+  :ensure t
+  :config
+  (load-theme 'classic t t)
+  (enable-theme 'classic))
+
+(use-package diminish
+  :ensure t
+  :config
+  (require 'diminish)
+  (diminish 'hs-minor-mode ""))
+
+(use-package helm
+  :ensure t
+  :config
+  (require 'helm-config))
+
+(use-package htmlize
+  :ensure t)
+
+(use-package json-mode
+  :ensure t)
+
+(use-package magit
+  :ensure t)
+
+(use-package markdown-mode
+  :ensure t)
+(use-package markdown-preview-mode
+  :ensure t)
+
+(use-package mmm-jinja2
+  :ensure t)
+(use-package salt-mode
+  :ensure t)
+
+(use-package ssh-config-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '(".ssh/config\\'"  . ssh-config-mode))
+  (add-to-list 'auto-mode-alist '("sshd?_config\\'" . ssh-config-mode))
+  (add-hook 'ssh-config-mode-hook 'turn-on-font-lock))
+
+(use-package terraform-mode
+  :ensure t)
+
+(use-package try
+  :ensure t)
+
+(use-package yaml-mode
+  :ensure t
+  :config
+  (require 'yaml-mode)
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+  (add-hook 'yaml-mode-hook
+	    '(lambda ()
+	       (define-key yaml-mode-map "\C-m" 'newline-and-indent))))
+
+(use-package yasnippet
+  :ensure t
+  :diminish 'yas-minor-mode
+  :config
+  (require 'yasnippet)
+  (yas-global-mode 1)
+  (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt)))
+(use-package yasnippet-snippets
+  :ensure t)
 
 (org-babel-do-load-languages 'org-babel-load-languages
 			     '((C		. nil)
@@ -190,11 +299,3 @@
 			       (translate	. nil)
 			       (typescript	. nil)
 			       (vala		. nil)))
-
-(put 'narrow-to-region 'disabled nil)
-
-(speedbar)
-
-(require 'server)
-(unless (server-running-p)
-  (server-start))
