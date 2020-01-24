@@ -33,6 +33,12 @@ if [ ${BASH_VERSINFO[0]} -gt 3 ] ; then
     shopt -s globstar 		# expand /**/
 fi
 
+if [ -d $HOME/.local/lib/bash -a -f $HOME/.local/lib/bash/*.sh ] ; then
+    for i in $HOME/.local/lib/bash/*.sh ; do
+	. $i
+    done
+fi
+
 dox()
 {
     type -p fzf >/dev/null || return

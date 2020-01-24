@@ -51,6 +51,12 @@ export ALTERNATE_EDITOR ANSIBLE_CONFIG BASH_ENV CLICOLOR CVS_RSH EDITOR \
 
 unset TMOUT
 
+if [ -d $HOME/.local/lib/bash -a -f $HOME/.local/lib/bash/*.sh ] ; then
+    for i in $HOME/.local/lib/bash/*.sh ; do
+	. $i
+    done
+fi
+
 if [ -x /usr/games/fortune ] ; then
     /usr/games/fortune
 elif [ -x /usr/bin/fortune ] ; then
