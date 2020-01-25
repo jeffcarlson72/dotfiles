@@ -1,0 +1,207 @@
+#+TITLE: Dotfiles
+#+AUTHOR: Jeff Carlson
+
+* Preface
+
+I finally decided to make this.  I put it off for a long time but I
+wanted to share some of my configs with my co-workers and this is the
+easiest way to do that.
+
+* Installation
+
+I think it should be obvious what to do here.
+
+#+BEGIN_SRC shell-script
+  for i in [a-z]* ; do
+      cp $i $HOME/.$i
+  done
+#+END_SRC
+
+* Philosophy
+
+On my workstation, there are generally four programs I always run
+whenever I log in:  a terminal (which runs bash), Firefox, Thunderbird,
+and Emacs.
+
+** bash_profile
+
+This started life as the stock file shipped from RedHat Linux,
+eventually progressing to Fedora.
+
+I like files that begin with dots to sort first, followed by capital
+letters, and finally lower case.  Therefore, I reset the locale
+setting back to good ol' Posix.
+
+Emacs is life.  As I said, I just start it when I log in and it just
+keeps humming along, ready for me to use.  If I'm using a computer
+that doesn't have Emacs, I quite like mg (for Micro-Gnu-emacs, which
+is BSD licensed so, go figure).  I used to use zile as an alternative
+to Emacs, so it's still a decent fall back.
+
+The `ls` command on FreeBSD does color somewhat like GNU `ls`.
+`CLICOLOR` just has to be set, it doesn't matter what value it has.
+
+Some machines I'm on don't have a prompt string set, so I added a way
+to add a host-specific prompt or alias and function files.
+
+Finally, who doesn't like a little extra fortune in their life?
+
+** bashrc
+
+This file also started its life from the stock RedHat skeleton file.
+
+As I have added a few Debian-based installations to my life, meeting
+the needs of both flavors of Linux requires a little flexibility,
+which is only a good thing, I think.
+
+The Debian skeleton file adds a line to break out of this file if the
+session is not interactive.  It seems like a good idea not to waste
+time on interactive settings in a non-interactive session.
+
+RedHat removed the interogative flags from some file utilities many
+years ago.  I put them back.  I also like the `dir` and `vdir`
+commands to be in color.
+
+The extglob shell option allows you to use regex-like glob-prefixes on
+the command line.  Setting lithist means when you hit the up arrow,
+any multi-line shell commands will retain those newlines.  You can cd
+into a directory just by entering it as a command if autocd is set.
+Honestly, I don't use this very often but it sounds like a cool idea
+so I leave it on.  And globstar mimicks the only function I ever heard
+about in zsh that I thought was compelling enough to try it out, but
+now I don't have to.  It allows you to recurse directories by adding
+two asterisks.
+
+Since the profile is sourced for a login shell, and the rc file is
+sourced for interactive sessions, add the local customizations again
+in case this is not a login shell.
+
+Ok, now my shell functions.  I want to give a shout out to YouTuber
+[[https://www.youtube.com/channel/UC2eYFnH61tmytImy1mTYvhA][Luke Smith]] for bringing up `fzf`, the fuzzy finder.  It works kind of
+like an interactive regular expression parse, but not quite regular
+expressions.  Let's say you pipe some text into fzf.  Now type "the."
+What fzf will now do is narrow down the lines displayed to those
+matching ".*t.*h.*e.*."  So I built some tools around it for searching
+documentation, history, and log files.  Finally, I wrote my pyle
+function, which is a combination of PYgments and LEss.  Pygments will
+colorize text written in most popular programming languages like any
+good editor would.
+
+** emacs
+
+Did I mention Emacs is life?  I have been using Emacs for about as
+long as I have been using Linux and Unix.  I probably fired up Emacs
+the first time I installed Linux on my trusty old 386.  Today, I don't
+start writing anything unless it's in Emacs.  Even word processors
+just bug me because they aren't Emacs.
+
+For years I only added a few configuration lines to my `.emacs` file,
+preferring to leave it pretty close to stock.  Now I see I lost a lot
+of time with that because Emacs extensions can do so much for you.
+
+Before I move forward, it's worth noting that there are multiple
+locations Emacs will look for its initialization file.  I think the
+first one found wins, and it starts with `~/.emacs.`  Second will be
+`~/.emacs.d/init.elc` and third will be `~/.emacs.d/init.el,` the
+former being the byte-compiled (for speed) version of the latter.  I
+just use `~/.emacs` out of habbit.
+
+Also, some people like to turn their init file into an org-mode
+document and use symantec processing to load it.  I have not done
+this.
+
+Quite recently I have started watching the /Using Emacs/ series on
+YouTube by [[https://www.youtube.com/user/mzamansky][Mike Zamansky]].  He is a college professor in New York and
+Emacs enthusiast.  Through this series I have learned about a lot of
+Emacs extensions and so I recently began encorporating many of them
+into my own Emacs configuration.
+
+Just as Perl has CPAN and Python has pip (we could go on a while with
+this), Emacs has [[elpa.gnu.org][ELPA]] -- the Emacs Lisp Package Archive.  And there
+are a few other archives worth knowing about, specifically [[http://melpa.org/#/][MELPA]] --
+Milkypostman's ELPA.  The beginning code sets up MELPA, which is kind
+of the bleeding-edge repository built mostly from recent Git commits,
+and Stable MELPA.
+
+I use Emacs' built-in configuration editor whenever possible to set
+variables.  Some variables are global, others are for specific modes
+and packages.
+
+I had to use Windows recently.  Cascadia is a font that Microsoft made
+and released under an open source license which looks really good.
+The lower-case L does not look like a one and zero does not look like
+an upper-case O.  It's a TrueType font and it's available for Linux, too.
+
+I use narrowing a lot when editing.  Allowing it to be used requires a
+special flag.  I like to use "y" and "n," getch()-style instead of
+"yes" and "no" with an explicit ENTER.  And you can turn off quite a
+few things in Emacs.  I actually like the menu and toolbar but I don't
+really use the scrollbar.
+
+Although I don't code in some of these languages, I like having
+hide-show mode available to any that support it so I can use it even
+if viewing code.  I just wish there were hs-minor-modes for HTML and
+CSS.
+
+Discovering tramp was probably one of the most life-changing events I
+can think of.  I used to install Emacs on tons of servers, but now I
+can use it from the comfort of my own workstation and basically bring
+the work to me.  The proxies ensure that first you make an external
+connection using ssh as a normal user before invoking sudo, but still
+allows you to use sudo without such a proxy if you're working on the
+local machine.
+
+If emacs is your `$EDITOR` (actually emacsclient), then start in
+shell-script-mode when using `fc` or `C-x e` on the command line.
+Likewise, start in mail-mode when composing an email with mutt.
+
+The Emacs server is what emacsclient connects to.
+
+Remember packages?  There's a package called use-package, which allows
+you to automatically install almost any package when Emacs first
+starts up if it's not already installed.  This saves you from having
+to run package-list-packages or package-install all the time to
+install them on new machines.  It also allows you to keep
+configuration of specific elements of those packages nice and tidy in
+their own little lisp-blocks.  This code installs use-package before
+trying to use use-package to install other packages.
+
+I'm not going to talk about all the packages.
+
+I will talk about color-theme-modern.  For terminals, I really like
+[[https://ethanschoonover.com/solarized/][Solarized]] themes.  But I didn't like the Solarized Emacs theme, I
+think it washed out some of the colors.  I like the "Classic" theme
+which is a dark slate-gray background and wheat foreground.  And the
+other colors used throughout the theme remain crisp without getting
+all angry-fruit-salad on me.
+
+In [[https://www.youtube.com/watch?v=1IYsiHXR620][Episode 47]] of /Using Emacs/, Zamansky said of Magit (pronounced
+like "magic"), if you are a developer using Git and Emacs, you have to
+use Magit.  If you are a developer using Git but not Emacs, start
+using just Magit.  And if you're not a developer, become one, just so
+you can use Magit.  There are some really cool features, I recommend
+people check out this video.
+
+And I just want to go over a few packages that I already skipped past
+just real quick.  First, beacon mode makes the line the cursor is on
+flash briefly when the screen is redrawn, like when you switch buffers
+or move a full page up or down.  Diminish just allws you to hide some
+mode information from the mode-line because it might not be useful to
+always see it.  Try mode allows you to download and use a package
+without permanently installing it; it won't save to `~/.emacs.d` or
+edit `~/.emacs`.
+
+I put the org-babel list at the end because it's really long.  What is
+org-babel?  It's an extension that allows you to execute code snippets
+from inside an org-mode file.  If you open this file in Emacs, put
+your cursor in the example under Installation, and hit C-c C-c, it
+will run that shell command.
+
+** mg
+
+I often use mg to make quick edits on files the way many people would
+probably use vi.  But I like mg, it has nice key bindings which
+emulate Emacs.
+
+There aren't that many settings for mg.  I only found a couple I
+thought were worth while.
