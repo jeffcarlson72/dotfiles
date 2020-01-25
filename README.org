@@ -38,8 +38,8 @@ that doesn't have Emacs, I quite like mg (for Micro-Gnu-emacs, which
 is BSD licensed so, go figure).  I used to use zile as an alternative
 to Emacs, so it's still a decent fall back.
 
-The `ls` command on FreeBSD does color somewhat like GNU `ls`.
-`CLICOLOR` just has to be set, it doesn't matter what value it has.
+The =ls= command on FreeBSD does color somewhat like GNU =ls=.
+=CLICOLOR= just has to be set, it doesn't matter what value it has.
 
 Some machines I'm on don't have a prompt string set, so I added a way
 to add a host-specific prompt or alias and function files.
@@ -59,7 +59,7 @@ session is not interactive.  It seems like a good idea not to waste
 time on interactive settings in a non-interactive session.
 
 RedHat removed the interogative flags from some file utilities many
-years ago.  I put them back.  I also like the `dir` and `vdir`
+years ago.  I put them back.  I also like the =dir= and =vdir=
 commands to be in color.
 
 The extglob shell option allows you to use regex-like glob-prefixes on
@@ -77,7 +77,7 @@ sourced for interactive sessions, add the local customizations again
 in case this is not a login shell.
 
 Ok, now my shell functions.  I want to give a shout out to YouTuber
-[[https://www.youtube.com/channel/UC2eYFnH61tmytImy1mTYvhA][Luke Smith]] for bringing up `fzf`, the fuzzy finder.  It works kind of
+[[https://www.youtube.com/channel/UC2eYFnH61tmytImy1mTYvhA][Luke Smith]] for bringing up =fzf=, the fuzzy finder.  It works kind of
 like an interactive regular expression parse, but not quite regular
 expressions.  Let's say you pipe some text into fzf.  Now type "the."
 What fzf will now do is narrow down the lines displayed to those
@@ -95,16 +95,16 @@ the first time I installed Linux on my trusty old 386.  Today, I don't
 start writing anything unless it's in Emacs.  Even word processors
 just bug me because they aren't Emacs.
 
-For years I only added a few configuration lines to my `.emacs` file,
+For years I only added a few configuration lines to my =.emacs= file,
 preferring to leave it pretty close to stock.  Now I see I lost a lot
 of time with that because Emacs extensions can do so much for you.
 
 Before I move forward, it's worth noting that there are multiple
 locations Emacs will look for its initialization file.  I think the
-first one found wins, and it starts with `~/.emacs.`  Second will be
-`~/.emacs.d/init.elc` and third will be `~/.emacs.d/init.el,` the
+first one found wins, and it starts with =~/.emacs.=  Second will be
+=~/.emacs.d/init.elc= and third will be =~/.emacs.d/init.el,= the
 former being the byte-compiled (for speed) version of the latter.  I
-just use `~/.emacs` out of habbit.
+just use =~/.emacs= out of habbit.
 
 Also, some people like to turn their init file into an org-mode
 document and use symantec processing to load it.  I have not done
@@ -151,8 +151,8 @@ connection using ssh as a normal user before invoking sudo, but still
 allows you to use sudo without such a proxy if you're working on the
 local machine.
 
-If emacs is your `$EDITOR` (actually emacsclient), then start in
-shell-script-mode when using `fc` or `C-x e` on the command line.
+If emacs is your =$EDITOR= (actually emacsclient), then start in
+shell-script-mode when using =fc= or =C-x e= on the command line.
 Likewise, start in mail-mode when composing an email with mutt.
 
 The Emacs server is what emacsclient connects to.
@@ -188,8 +188,8 @@ flash briefly when the screen is redrawn, like when you switch buffers
 or move a full page up or down.  Diminish just allws you to hide some
 mode information from the mode-line because it might not be useful to
 always see it.  Try mode allows you to download and use a package
-without permanently installing it; it won't save to `~/.emacs.d` or
-edit `~/.emacs`.
+without permanently installing it; it won't save to =~/.emacs.d= or
+edit =~/.emacs=.
 
 I put the org-babel list at the end because it's really long.  What is
 org-babel?  It's an extension that allows you to execute code snippets
