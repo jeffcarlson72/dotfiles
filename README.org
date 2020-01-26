@@ -83,9 +83,9 @@ expressions.  Let's say you pipe some text into fzf.  Now type "the."
 What fzf will now do is narrow down the lines displayed to those
 matching /.*t.*h.*e.*/.  So I built some tools around it for searching
 documentation, history, and log files.  Finally, I wrote my pyle
-function, which is a combination of PYgments and LEss.  Pygments will
-colorize text written in most popular programming languages like any
-good editor would.
+function, which is a combination of PYgmentize and LEss.  Pygmentize
+will colorize text written in most popular programming languages like
+any good editor would.
 
 ** emacs
 
