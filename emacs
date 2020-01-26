@@ -134,11 +134,19 @@ There are two things you can do about this warning:
 (unless (server-running-p)
   (server-start))
 
-(eval-when-compile
-  (require 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  ;; You can run the command ‘package-refresh-contents’ with M-x pa-r- RET
+  (package-install 'use-package))
 
 (use-package apache-mode
   :ensure t)
+
+(use-package atomic-chrome
+  ;; Use Atomic Chrome for Chrome or GhostText for Mozilla
+  :ensure t
+  :config (atomic-chrome-start-server))
+  (setq atomic-chrome-buffer-open-style 'frame)
 
 (use-package beacon
   :ensure t
@@ -158,6 +166,17 @@ There are two things you can do about this warning:
   :config
   (load-theme 'classic t t)
   (enable-theme 'classic))
+
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 3)
+  (global-company-mode t))
+;; (use-package company-jedi
+;;   :ensure t
+;;   :config
+;;   (add-hook 'python-mode-hook 'jedi:setup))
 
 (use-package diminish
   :ensure t
@@ -220,6 +239,8 @@ There are two things you can do about this warning:
   (yas-global-mode 1)
   (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt)))
 (use-package yasnippet-snippets
+  :ensure t)
+(use-package yasnippet-classic-snippets
   :ensure t)
 
 (org-babel-do-load-languages 'org-babel-load-languages
