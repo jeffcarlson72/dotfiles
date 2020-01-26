@@ -76,7 +76,7 @@ There are two things you can do about this warning:
  '(ssh-config-mode-indent 4)
  '(transient-mark-mode t)
  '(user-full-name "Jeff Carlson")
- '(user-mail-address "jdcarlson@mednet.ucla.edu")
+ '(user-mail-address "*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@")
  '(visible-bell t))
 
 (custom-set-faces
@@ -169,6 +169,7 @@ There are two things you can do about this warning:
 
 (use-package company
   :ensure t
+  :diminish 'company-mode
   :config
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 3)
@@ -181,13 +182,15 @@ There are two things you can do about this warning:
 (use-package diminish
   :ensure t
   :config
-  (require 'diminish)
-  (diminish 'hs-minor-mode ""))
+  (require 'diminish))
 
 (use-package helm
   :ensure t
   :config
   (require 'helm-config))
+
+(use-package hideshow
+  :diminish 'hs-minor-mode)
 
 (use-package htmlize
   :ensure t)
@@ -239,8 +242,6 @@ There are two things you can do about this warning:
   (yas-global-mode 1)
   (setq yas-prompt-functions '(yas-x-prompt yas-dropdown-prompt)))
 (use-package yasnippet-snippets
-  :ensure t)
-(use-package yasnippet-classic-snippets
   :ensure t)
 
 (org-babel-do-load-languages 'org-babel-load-languages
