@@ -15,15 +15,18 @@ fi
 ANSIBLE_CONFIG=$HOME/.ansible/ansible.cfg
 BASH_ENV=$HOME/.bashrc
 CVS_RSH=ssh
+HISTCONTROL=ignoredups
+HISTFILESIZE=5000
 HISTIGNORE=history
+HISTSIZE=$HISTFILESIZE
 LESS=-MR
 PATH=$PATH:$HOME/bin
 
-if [ $( locale | grep -q utf8 ) ] ; then
-    LANG=C.utf8
-else
-    LANG=C
-fi
+case `uname -s` in
+    Darwin|FreeBSD|NetBSD)
+	CLICOLOR=1
+	;;
+esac
 
 if [ "`type -t emacs`" == 'file' ] ; then
     EDITOR=emacsclient
@@ -40,16 +43,18 @@ elif [ "`type -t zile`" == 'file' ] ; then
     EDITOR=zile
 fi
 
-case `uname -s` in
-    Darwin|FreeBSD|NetBSD)
-	CLICOLOR=1
-	;;
-esac
+if [ -d $HOME/.bash_history ] ; then
+    HISTFILE=$HOME/.bash_history/$( hostname -s )
+fi
+
+if [ $( locale | grep -q utf8 ) ] ; then
+    LANG=C.utf8
+else
+    LANG=C
+fi
 
 export ALTERNATE_EDITOR ANSIBLE_CONFIG BASH_ENV CLICOLOR CVS_RSH EDITOR \
-    HISTIGNORE LANG LESS PATH
-
-unset TMOUT
+    HISTCONTROL HISTFILE HISTFILESIZE HISTIGNORE HISTSIZE LANG LESS PATH
 
 if [ -d $HOME/.local/lib/bash -a -f $HOME/.local/lib/bash/*.sh ] ; then
     for i in $HOME/.local/lib/bash/*.sh ; do
