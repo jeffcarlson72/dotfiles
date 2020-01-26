@@ -17,7 +17,7 @@ I think it should be obvious what to do here.
   done
 #+END_SRC
 
-* Philosophy
+* Contents
 
 On my workstation, there are generally four programs I always run
 whenever I log in:  a terminal (which runs bash), Firefox, Thunderbird,
@@ -28,21 +28,31 @@ and Emacs.
 This started life as the stock file shipped from RedHat Linux,
 eventually progressing to Fedora.
 
-I like files that begin with dots to sort first, followed by capital
-letters, and finally lower case -- basically, ASCII order.  Therefore,
-I reset the locale setting back to good ol' Posix.
+The =ls= command on FreeBSD does color much like GNU =ls=.  =CLICOLOR=
+just has to be set, it doesn't matter what value it has.
 
 Emacs is life.  As I said, I just start it when I log in and it just
 keeps humming along, ready for me to use.  If I'm using a computer
 that doesn't have Emacs, I quite like mg (for Micro-Gnu-emacs, which
-is BSD licensed so, go figure).  I used to use zile as an alternative
-to Emacs, so it's still a decent fall back.
+is BSD licensed so, go figure; it comes from the OpenBSD project).  I
+used to use zile as an alternative to Emacs, so it's still a decent
+fall back if it's installed.  Note that commands like =visudo= will
+only honor the =EDITOR= variable if the value is a file and not an
+alias.
 
-The =ls= command on FreeBSD does color somewhat like GNU =ls=.
-=CLICOLOR= just has to be set, it doesn't matter what value it has.
+When your home directory is mounted via NFS, it is nice to keep your
+shell history separated per host name.  Also, learn from your past,
+save more shell history.
 
-Some machines I'm on don't have a prompt string set, so I added a way
-to add a host-specific prompt or alias and function files.
+Note that for the =root= account, I like to separate out the shell
+history per =$SUDO_USER=.
+
+I like files that begin with dots to sort first, followed by capital
+letters, and finally lower case -- basically, ASCII order.  Therefore,
+I reset the locale setting back to good ol' Posix.
+
+Some machines I'm on don't have a prompt string set.  So, I added a
+way to add a host-specific prompt or alias and function files.
 
 Finally, who doesn't like a little extra fortune in their life?
 
