@@ -29,8 +29,8 @@ This started life as the stock file shipped from RedHat Linux,
 eventually progressing to Fedora.
 
 I like files that begin with dots to sort first, followed by capital
-letters, and finally lower case.  Therefore, I reset the locale
-setting back to good ol' Posix.
+letters, and finally lower case -- basically, ASCII order.  Therefore,
+I reset the locale setting back to good ol' Posix.
 
 Emacs is life.  As I said, I just start it when I log in and it just
 keeps humming along, ready for me to use.  If I'm using a computer
@@ -78,10 +78,10 @@ in case this is not a login shell.
 
 Ok, now my shell functions.  I want to give a shout out to YouTuber
 [[https://www.youtube.com/channel/UC2eYFnH61tmytImy1mTYvhA][Luke Smith]] for bringing up =fzf=, the fuzzy finder.  It works kind of
-like an interactive regular expression parse, but not quite regular
+like an interactive regular expression parser, but not quite regular
 expressions.  Let's say you pipe some text into fzf.  Now type "the."
 What fzf will now do is narrow down the lines displayed to those
-matching ".*t.*h.*e.*."  So I built some tools around it for searching
+matching /.*t.*h.*e.*/.  So I built some tools around it for searching
 documentation, history, and log files.  Finally, I wrote my pyle
 function, which is a combination of PYgments and LEss.  Pygments will
 colorize text written in most popular programming languages like any
@@ -113,7 +113,7 @@ this.
 Quite recently I have started watching the /Using Emacs/ series on
 YouTube by [[https://www.youtube.com/user/mzamansky][Mike Zamansky]].  He is a college professor in New York and
 Emacs enthusiast.  Through this series I have learned about a lot of
-Emacs extensions and so I recently began encorporating many of them
+Emacs extensions and so I recently began incorporating many of them
 into my own Emacs configuration.
 
 Just as Perl has CPAN and Python has pip (we could go on a while with
@@ -127,13 +127,13 @@ I use Emacs' built-in configuration editor whenever possible to set
 variables.  Some variables are global, others are for specific modes
 and packages.
 
-I had to use Windows recently.  Cascadia is a font that Microsoft made
+I had to use Windows recently.  [[https://github.com/microsoft/cascadia-code][Cascadia]] is a font that Microsoft made
 and released under an open source license which looks really good.
 The lower-case L does not look like a one and zero does not look like
 an upper-case O.  It's a TrueType font and it's available for Linux, too.
 
 I use narrowing a lot when editing.  Allowing it to be used requires a
-special flag.  I like to use "y" and "n," getch()-style instead of
+special flag.  I like to use "y" and "n," getc(3)-style instead of
 "yes" and "no" with an explicit ENTER.  And you can turn off quite a
 few things in Emacs.  I actually like the menu and toolbar but I don't
 really use the scrollbar.
