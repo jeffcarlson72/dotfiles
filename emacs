@@ -91,6 +91,7 @@ There are two things you can do about this warning:
 		:height 120
 		:width normal)))))
 
+(put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 (scroll-bar-mode 0)
