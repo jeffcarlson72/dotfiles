@@ -56,7 +56,7 @@ fi
 export ALTERNATE_EDITOR ANSIBLE_CONFIG BASH_ENV CLICOLOR CVS_RSH EDITOR \
     HISTCONTROL HISTFILE HISTFILESIZE HISTIGNORE HISTSIZE LANG LESS PATH
 
-if [ -d $HOME/.local/lib/bash -a -f $HOME/.local/lib/bash/*.sh ] ; then
+if [ -d $HOME/.local/lib/bash ] ; then
     for i in $HOME/.local/lib/bash/*.sh ; do
 	. $i
     done
