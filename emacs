@@ -94,6 +94,7 @@ There are two things you can do about this warning:
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 (fset 'yes-or-no-p 'y-or-n-p)
+(blink-cursor-mode 0)
 (scroll-bar-mode 0)
 
 (add-hook 'bibtex-mode-hook     'hs-minor-mode)
