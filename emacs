@@ -138,7 +138,7 @@ There are two things you can do about this warning:
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  ;; You can run the command ‘package-refresh-contents’ with M-x pa-r- RET
+  ;; You can run the command 'package-refresh-contents' with M-x pa-r- RET
   (package-install 'use-package))
 
 (use-package apache-mode
@@ -147,7 +147,8 @@ There are two things you can do about this warning:
 (use-package atomic-chrome
   ;; Use Atomic Chrome for Chrome or GhostText for Mozilla
   :ensure t
-  :config (atomic-chrome-start-server))
+  :config
+  (atomic-chrome-start-server))
   (setq atomic-chrome-buffer-open-style 'frame)
 
 (use-package beacon
