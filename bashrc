@@ -33,7 +33,7 @@ if [ ${BASH_VERSINFO[0]} -gt 3 ] ; then
     shopt -s globstar 		# expand /**/
 fi
 
-if [ -d $HOME/.local/lib/bash -a -f $HOME/.local/lib/bash/*.sh ] ; then
+if [ -d $HOME/.local/lib/bash ] ; then
     for i in $HOME/.local/lib/bash/*.sh ; do
 	. $i
     done
