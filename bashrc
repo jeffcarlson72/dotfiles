@@ -71,12 +71,12 @@ h()
 logs()
 {
     type -p fzf >/dev/null || return
-    type -p colorize >/dev/null || return
+    clrz=$( type -p colorize || type -p ccze ) || return
 
     sudo find /var/log/ -type f ! -name wtmp ! -name btmp |
         fzf |
         xargs -i sudo cat {} |
-        colorize |
+        $clrz |
         less -MR
 }
 
