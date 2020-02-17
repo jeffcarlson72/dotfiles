@@ -47,7 +47,7 @@ if [ -d $HOME/.bash_history ] ; then
     HISTFILE=$HOME/.bash_history/$( hostname -s )
 fi
 
-if [ $( locale | grep -q utf8 ) ] ; then
+if [ $( locale -a | fgrep -q C.utf8 ) ] ; then
     LANG=C.utf8
 else
     LANG=C
