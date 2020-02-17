@@ -187,6 +187,10 @@ There are two things you can do about this warning:
   :config
   (require 'diminish))
 
+(use-package dired
+  :config
+  (require 'ls-lisp))
+
 (use-package helm
   :ensure t
   :config
