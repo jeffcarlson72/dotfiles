@@ -218,6 +218,9 @@ There are two things you can do about this warning:
 (use-package salt-mode
   :ensure t)
 
+(use-package sed-mode
+  :ensure t)
+
 (use-package ssh-config-mode
   :ensure t
   :config
@@ -328,3 +331,7 @@ There are two things you can do about this warning:
 			       (translate	. nil)
 			       (typescript	. nil)
 			       (vala		. nil)))
+
+;; Local Variables:
+;; mode: emacs-lisp
+;; End:
