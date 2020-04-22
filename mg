@@ -6,4 +6,8 @@
 #              |___/ 
 
 column-number-mode
-make-backup-files 'nil
+make-backup-files 'nil #'
+
+# Local Variables:
+# mode: conf-unix
+# End:

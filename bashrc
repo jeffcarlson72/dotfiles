@@ -86,3 +86,7 @@ pyle()
 
     pygmentize -g $1 | less -MR
 }
+
+# Local Variables:
+# mode: shell-script
+# End:

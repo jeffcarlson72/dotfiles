@@ -328,3 +328,7 @@ There are two things you can do about this warning:
 			       (translate	. nil)
 			       (typescript	. nil)
 			       (vala		. nil)))
+
+;; Local Variables:
+;; mode: emacs-lisp
+;; End:
