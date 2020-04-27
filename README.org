@@ -111,8 +111,8 @@ of time with that because Emacs extensions can do so much for you.
 
 Before I move forward, it's worth noting that there are multiple
 locations Emacs will look for its initialization file.  I think the
-first one found wins, and it starts with =~/.emacs.=  Second will be
-=~/.emacs.d/init.elc= and third will be =~/.emacs.d/init.el,= the
+first one found wins, and it starts with =~/.emacs=.  Second will be
+=~/.emacs.d/init.elc= and third will be =~/.emacs.d/init.el=, the
 former being the byte-compiled (for speed) version of the latter.  I
 just use =~/.emacs= out of habbit.
 
@@ -150,8 +150,7 @@ really use the scrollbar.
 
 Although I don't code in some of these languages, I like having
 hide-show mode available to any that support it so I can use it even
-if viewing code.  I just wish there were hs-minor-modes for HTML and
-CSS.
+if viewing code.  I just wish there were hs-minor-modes for HTML.
 
 Discovering tramp was probably one of the most life-changing events I
 can think of.  I used to install Emacs on tons of servers, but now I
@@ -163,7 +162,7 @@ local machine.
 
 If emacs is your =$EDITOR= (actually emacsclient), then start in
 shell-script-mode when using =fc= or =C-x e= on the command line.
-Likewise, start in mail-mode when composing an email with mutt.
+Likewise, start in mail-mode when composing an email with Mutt.
 
 The Emacs server is what emacsclient connects to.
 
@@ -195,7 +194,7 @@ people check out this video.
 And I just want to go over a few packages that I already skipped past
 just real quick.  First, beacon mode makes the line the cursor is on
 flash briefly when the screen is redrawn, like when you switch buffers
-or move a full page up or down.  Diminish just allws you to hide some
+or move a full page up or down.  Diminish just allows you to hide some
 mode information from the mode-line because it might not be useful to
 always see it.  Try mode allows you to download and use a package
 without permanently installing it; it won't save to =~/.emacs.d= or
