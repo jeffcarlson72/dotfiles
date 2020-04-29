@@ -84,7 +84,10 @@ pyle()
 {
     type -p pygmentize >/dev/null || return
 
-    pygmentize -g $1 | less -MR
+    if [ $# -eq 1 ] ; then
+	opt=-g
+    fi
+    pygmentize $opt $@ | less -MR
 }
 
 # Local Variables:
