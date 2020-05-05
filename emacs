@@ -211,7 +211,7 @@ There are two things you can do about this warning:
   :ensure t
   :config
   (when (memq system-type '(windows-nt ms-dos)) ;; fml
-    (setenv "GIT_SSH" "/c/ProgramData/chocolatey/bin/plink.exe")))
+    (setenv "GIT_SSH" "plink.exe")))
 
 (use-package markdown-mode
   :ensure t)
