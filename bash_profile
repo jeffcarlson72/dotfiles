@@ -63,7 +63,16 @@ if [ -d $HOME/.local/lib/bash ] ; then
 fi
 
 if [ -x /usr/games/fortune ] ; then
-    /usr/games/fortune
+    case `uname -s` in
+	FreeBSD)
+	    /usr/games/fortune freebsd-tips
+	    ;;
+	NetBSD)
+	    /usr/games/fortune netbsd-tips
+	    ;;
+	*)
+	    /usr/games/fortune
+	    ;;
 elif [ -x /usr/bin/fortune ] ; then
     /usr/bin/fortune
 fi
