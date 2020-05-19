@@ -73,6 +73,7 @@ if [ -x /usr/games/fortune ] ; then
 	*)
 	    /usr/games/fortune
 	    ;;
+    esac
 elif [ -x /usr/bin/fortune ] ; then
     /usr/bin/fortune
 fi
