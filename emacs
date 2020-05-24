@@ -115,9 +115,11 @@ There are two things you can do about this warning:
 (add-hook 'vhdl-mode-hook       'hs-minor-mode)
 
 (require 'tramp)
-(setq tramp-default-method "ssh")
+(if (memq system-type '(windows-nt ms-dos)) ;; fml
+    (setq tramp-default-method "plink")
+  (setq tramp-default-method "ssh"))
 (add-to-list 'tramp-default-proxies-alist
-	     '(nil "\\`root\\'" "/ssh:%h:"))
+	     '(nil "\\`root\\'" (concat "/" tramp-default-method ":%h:")))
 (add-to-list 'tramp-default-proxies-alist
 	     '((regexp-quote (system-name)) nil nil))
 (tramp-set-completion-function
@@ -253,7 +255,10 @@ There are two things you can do about this warning:
   :ensure t)
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :config
+  (when (memq system-type '(windows-nt ms-dos)) ;; fml
+    (setenv "GIT_SSH" "plink.exe")))
 
 (use-package markdown-mode
   :ensure t)
