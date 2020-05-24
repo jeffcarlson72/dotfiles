@@ -86,16 +86,8 @@ Since the profile is sourced for a login shell, and the rc file is
 sourced for interactive sessions, add the local customizations again
 in case this is not a login shell.
 
-Ok, now my shell functions.  I want to give a shout out to YouTuber
-[[https://www.youtube.com/channel/UC2eYFnH61tmytImy1mTYvhA][Luke Smith]] for bringing up =fzf=, the fuzzy finder.  It works kind of
-like an interactive regular expression parser, but not quite regular
-expressions.  Let's say you pipe some text into fzf.  Now type "the."
-What fzf will now do is narrow down the lines displayed to those
-matching /.*t.*h.*e.*/.  So I built some tools around it for searching
-documentation, history, and log files.  Finally, I wrote my pyle
-function, which is a combination of PYgmentize and LEss.  Pygmentize
-will colorize text written in most popular programming languages like
-any good editor would.
+I have migrated my shell functions to the dot-local-lib-bash
+repository.
 
 ** emacs
 

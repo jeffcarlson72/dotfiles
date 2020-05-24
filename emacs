@@ -198,7 +198,7 @@ There are two things you can do about this warning:
   :ensure t
   :config
   (atomic-chrome-start-server))
-  (setq atomic-chrome-buffer-open-style 'frame)
+(setq atomic-chrome-buffer-open-style 'frame)
 
 (use-package beacon
   :ensure t
