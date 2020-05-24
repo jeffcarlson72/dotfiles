@@ -39,57 +39,6 @@ if [ -d $HOME/.local/lib/bash ] ; then
     done
 fi
 
-dox()
-{
-    type -p fzf >/dev/null || return
-
-    doc=$( find /usr/share/doc -type f | sort | fzf )
-    case $( basename "$doc" ) in
-        *.gif|*.ico|*.jpg|*.jpeg|*.png)
-            display "$doc" &
-            ;;
-        *.htm|*.html)
-            lynx "$doc"
-            ;;
-        *.pdf)
-            atril "$doc" &
-            ;;
-        *)
-            less "$doc"
-            ;;
-    esac
-    unset doc
-}
-
-h()
-{
-    type -p fzf >/dev/null || return
-
-    $( history | awk '{$1 = ""; print}' | fzf )
-}
-
-logs()
-{
-    type -p fzf >/dev/null || return
-    clrz=$( type -p colorize || type -p ccze ) || return
-
-    sudo find /var/log/ -type f ! -name wtmp ! -name btmp |
-        fzf |
-        xargs -i sudo cat {} |
-        $clrz |
-        less -MR
-}
-
-pyle()
-{
-    type -p pygmentize >/dev/null || return
-
-    if [ $# -eq 1 ] ; then
-	opt=-g
-    fi
-    pygmentize $opt $@ | less -MR
-}
-
 # Local Variables:
 # mode: shell-script
 # End:
