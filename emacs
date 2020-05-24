@@ -76,7 +76,6 @@ There are two things you can do about this warning:
  '(ssh-config-mode-indent 4)
  '(transient-mark-mode t)
  '(user-full-name "Jeff Carlson")
- '(user-mail-address "*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@*@")
  '(visible-bell t))
 
 (custom-set-faces
@@ -135,6 +134,54 @@ There are two things you can do about this warning:
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+;; org-mode begin
+(setq org-structure-template-alist
+      (cons '("sawk"
+	      "#+BEGIN_SRC awk\n?\n#+END_SRC"
+	      "<src lang=\"awk\">\n?\n</src>")
+            org-structure-template-alist))
+(setq org-structure-template-alist
+      (cons '("sed"
+	      "#+BEGIN_SRC sed\n?\n#+END_SRC"
+	      "<src lang=\"sed\">\n?\n</src>")
+            org-structure-template-alist))
+(setq org-structure-template-alist
+      (cons '("sc"
+	      "#+BEGIN_SRC c\n?\n#+END_SRC"
+	      "<src lang=\"c\">\n?\n</src>")
+	    org-structure-template-alist))
+(setq org-structure-template-alist
+      (cons '("sel"
+	      "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC"
+	      "<src lang=\"emacs-lisp\">\n?\n</src>")
+            org-structure-template-alist))
+(setq org-structure-template-alist
+      (cons '("sjs"
+	      "#+BEGIN_SRC javascript\n?\n#+END_SRC"
+	      "<src lang=\"javascript\">\n?\n</src>")
+	    org-structure-template-alist))
+(setq org-structure-template-alist
+      (cons '("spl"
+	      "#+BEGIN_SRC perl\n?\n#+END_SRC"
+	      "<src lang=\"perl\">\n?\n</src>")
+	    org-structure-template-alist))
+(setq org-structure-template-alist
+      (cons '("sphp"
+	      "#+BEGIN_SRC php\n?\n#+END_SRC"
+	      "<src lang=\"php\">\n?\n</src>")
+	    org-structure-template-alist))
+(setq org-structure-template-alist
+      (cons '("spy"
+	      "#+BEGIN_SRC python\n?\n#+END_SRC"
+	      "<src lang=\"python\">\n?\n</src>")
+	    org-structure-template-alist))
+(setq org-structure-template-alist
+      (cons '("ssh"
+	      "#+BEGIN_SRC shell\n?\n#+END_SRC"
+	      "<src lang=\"shell\">\n?\n</src>")
+	    org-structure-template-alist))
+;; org-mode end
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -213,10 +260,13 @@ There are two things you can do about this warning:
 (use-package markdown-preview-mode
   :ensure t)
 
-(use-package mmm-jinja2
+(use-package org-download
   :ensure t)
-(use-package salt-mode
-  :ensure t)
+
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-center-theme))
 
 (use-package sed-mode
   :ensure t)
@@ -331,6 +381,12 @@ There are two things you can do about this warning:
 			       (translate	. nil)
 			       (typescript	. nil)
 			       (vala		. nil)))
+
+;; Last thing, load local config
+(when (file-exists-p "~/.emacs.d/local.el")
+  (load-file "~/.emacs.d/local.el"))
+;; For example:
+;; (setq user-mail-address "username@domain.tld")
 
 ;; Local Variables:
 ;; mode: emacs-lisp
