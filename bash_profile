@@ -60,6 +60,7 @@ if [ -d $HOME/.local/lib/bash ] ; then
     for i in $HOME/.local/lib/bash/*.sh ; do
 	. $i
     done
+    unset i
 fi
 
 if [ -x /usr/games/fortune ] ; then
