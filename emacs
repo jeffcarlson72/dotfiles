@@ -190,6 +190,10 @@ There are two things you can do about this warning:
   ;; You can run the command 'package-refresh-contents' with M-x pa-r- RET
   (package-install 'use-package))
 
+(use-package all-the-icons
+  :ensure t)
+;; M-x all-the-icons-install-fonts
+
 (use-package apache-mode
   :ensure t)
 
@@ -285,6 +289,12 @@ There are two things you can do about this warning:
 
 (use-package terraform-mode
   :ensure t)
+
+(use-package treemacs
+  :ensure t
+  :bind
+  (:map global-map
+	([f8] . treemacs)))
 
 (use-package try
   :ensure t)
