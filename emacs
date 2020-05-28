@@ -42,6 +42,7 @@ There are two things you can do about this warning:
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(diff-switches "-u")
+ '(dired-listing-switches "-al --group-directories-first")
  '(electric-pair-mode t)
  '(electric-quote-mode nil)
  '(kill-do-not-save-duplicates t)
@@ -238,6 +239,7 @@ There are two things you can do about this warning:
 
 (use-package dired
   :config
+  (setenv "LC_COLLATE" "C")
   (require 'ls-lisp))
 
 (use-package helm
