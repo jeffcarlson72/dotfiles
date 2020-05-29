@@ -91,11 +91,12 @@ There are two things you can do about this warning:
 		:height 120
 		:width normal)))))
 
+(blink-cursor-mode 0)
+(fset 'yes-or-no-p 'y-or-n-p)
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
-(fset 'yes-or-no-p 'y-or-n-p)
-(blink-cursor-mode 0)
 (scroll-bar-mode 0)
+(windmove-default-keybindings)
 
 (add-hook 'bibtex-mode-hook     'hs-minor-mode)
 (add-hook 'c-mode-common-hook   'hs-minor-mode)
@@ -139,51 +140,51 @@ There are two things you can do about this warning:
   (server-start))
 
 ;; org-mode begin
-(setq org-structure-template-alist
-      (cons '("sawk"
-	      "#+BEGIN_SRC awk\n?\n#+END_SRC"
-	      "<src lang=\"awk\">\n?\n</src>")
-            org-structure-template-alist))
-(setq org-structure-template-alist
-      (cons '("sed"
-	      "#+BEGIN_SRC sed\n?\n#+END_SRC"
-	      "<src lang=\"sed\">\n?\n</src>")
-            org-structure-template-alist))
-(setq org-structure-template-alist
-      (cons '("sc"
-	      "#+BEGIN_SRC c\n?\n#+END_SRC"
-	      "<src lang=\"c\">\n?\n</src>")
-	    org-structure-template-alist))
-(setq org-structure-template-alist
-      (cons '("sel"
-	      "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC"
-	      "<src lang=\"emacs-lisp\">\n?\n</src>")
-            org-structure-template-alist))
-(setq org-structure-template-alist
-      (cons '("sjs"
-	      "#+BEGIN_SRC javascript\n?\n#+END_SRC"
-	      "<src lang=\"javascript\">\n?\n</src>")
-	    org-structure-template-alist))
-(setq org-structure-template-alist
-      (cons '("spl"
-	      "#+BEGIN_SRC perl\n?\n#+END_SRC"
-	      "<src lang=\"perl\">\n?\n</src>")
-	    org-structure-template-alist))
-(setq org-structure-template-alist
-      (cons '("sphp"
-	      "#+BEGIN_SRC php\n?\n#+END_SRC"
-	      "<src lang=\"php\">\n?\n</src>")
-	    org-structure-template-alist))
-(setq org-structure-template-alist
-      (cons '("spy"
-	      "#+BEGIN_SRC python\n?\n#+END_SRC"
-	      "<src lang=\"python\">\n?\n</src>")
-	    org-structure-template-alist))
-(setq org-structure-template-alist
-      (cons '("ssh"
-	      "#+BEGIN_SRC shell\n?\n#+END_SRC"
-	      "<src lang=\"shell\">\n?\n</src>")
-	    org-structure-template-alist))
+;; (setq org-structure-template-alist
+;;       (cons '("sawk"
+;; 	      "#+BEGIN_SRC awk\n?\n#+END_SRC"
+;; 	      "<src lang=\"awk\">\n?\n</src>")
+;;             org-structure-template-alist))
+;; (setq org-structure-template-alist
+;;       (cons '("sed"
+;; 	      "#+BEGIN_SRC sed\n?\n#+END_SRC"
+;; 	      "<src lang=\"sed\">\n?\n</src>")
+;;             org-structure-template-alist))
+;; (setq org-structure-template-alist
+;;       (cons '("sc"
+;; 	      "#+BEGIN_SRC c\n?\n#+END_SRC"
+;; 	      "<src lang=\"c\">\n?\n</src>")
+;; 	    org-structure-template-alist))
+;; (setq org-structure-template-alist
+;;       (cons '("sel"
+;; 	      "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC"
+;; 	      "<src lang=\"emacs-lisp\">\n?\n</src>")
+;;             org-structure-template-alist))
+;; (setq org-structure-template-alist
+;;       (cons '("sjs"
+;; 	      "#+BEGIN_SRC javascript\n?\n#+END_SRC"
+;; 	      "<src lang=\"javascript\">\n?\n</src>")
+;; 	    org-structure-template-alist))
+;; (setq org-structure-template-alist
+;;       (cons '("spl"
+;; 	      "#+BEGIN_SRC perl\n?\n#+END_SRC"
+;; 	      "<src lang=\"perl\">\n?\n</src>")
+;; 	    org-structure-template-alist))
+;; (setq org-structure-template-alist
+;;       (cons '("sphp"
+;; 	      "#+BEGIN_SRC php\n?\n#+END_SRC"
+;; 	      "<src lang=\"php\">\n?\n</src>")
+;; 	    org-structure-template-alist))
+;; (setq org-structure-template-alist
+;;       (cons '("spy"
+;; 	      "#+BEGIN_SRC python\n?\n#+END_SRC"
+;; 	      "<src lang=\"python\">\n?\n</src>")
+;; 	    org-structure-template-alist))
+;; (setq org-structure-template-alist
+;;       (cons '("ssh"
+;; 	      "#+BEGIN_SRC shell\n?\n#+END_SRC"
+;; 	      "<src lang=\"shell\">\n?\n</src>")
+;; 	    org-structure-template-alist))
 ;; org-mode end
 
 (unless (package-installed-p 'use-package)
@@ -248,8 +249,10 @@ There are two things you can do about this warning:
 
 (use-package helm
   :ensure t
+  :diminish
   :config
-  (require 'helm-config))
+  (require 'helm-config)
+  (helm-mode))
 
 (use-package hideshow
   :diminish 'hs-minor-mode)
