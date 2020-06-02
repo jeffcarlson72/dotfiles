@@ -279,7 +279,15 @@ There are two things you can do about this warning:
 (use-package markdown-preview-mode
   :ensure t)
 
+(use-package multiple-cursors
+  :ensure t
+  ;; do more with this
+  )
+
 (use-package org-download
+  :ensure t)
+
+(use-package php-mode
   :ensure t)
 
 (use-package powerline
