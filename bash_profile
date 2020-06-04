@@ -47,13 +47,9 @@ if [ -d $HOME/.bash_history ] ; then
     HISTFILE=$HOME/.bash_history/$( hostname -s )
 fi
 
-if [ $( locale -a | fgrep -q C.UTF-8 ) ] ; then
-    LANG=C.UTF-8
-elif [ $( locale -a | fgrep -q C.utf8 ) ] ; then
-    LANG=C.utf8
-else
-    LANG=C
-fi
+for LANG in $( locale -a | grep -w ^C ) ; do
+    [ ${#LANG} -gt 1 ] && break
+done
 
 export ALTERNATE_EDITOR ANSIBLE_CONFIG BASH_ENV CLICOLOR CVS_RSH EDITOR \
     HISTCONTROL HISTFILE HISTFILESIZE HISTIGNORE HISTSIZE LANG LESS PATH
