@@ -294,11 +294,9 @@ There are two things you can do about this warning:
 
 (use-package json-mode
   :ensure t
-  :init
-  (add-hook 'json-mode-hook
-	    (lambda ()
-		    (make-local-variable 'js-indent-level)
-		    (setq js-indent-level 2))))
+  :hook (json-mode . (lambda ()
+		       (make-local-variable 'js-indent-level)
+		       (setq js-indent-level 2))))
 
 (use-package magit
   :ensure t
