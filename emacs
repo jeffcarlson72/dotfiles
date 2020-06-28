@@ -174,7 +174,11 @@ There are two things you can do about this warning:
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
-	       (list "js"   (concat "#+BEGIN_SRC js\n"
+	       (list "html" (concat "#+BEGIN_SRC html\n"
+				    "?\n"
+				    "#+END_SRC")))
+  (add-to-list 'org-structure-template-alist
+	       (list "go"   (concat "#+BEGIN_SRC go\n"
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
@@ -195,6 +199,10 @@ There are two things you can do about this warning:
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
 	       (list "rb"   (concat "#+BEGIN_SRC ruby\n"
+				    "?\n"
+				    "#+END_SRC")))
+  (add-to-list 'org-structure-template-alist
+	       (list "rs"   (concat "#+BEGIN_SRC rust\n"
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
@@ -292,6 +300,9 @@ There are two things you can do about this warning:
 (use-package htmlize
   :ensure t)
 
+(use-package go-mode
+  :ensure t)
+
 (use-package json-mode
   :ensure t
   :hook (json-mode . (lambda ()
@@ -324,6 +335,9 @@ There are two things you can do about this warning:
   :ensure t
   :config
   (powerline-center-theme))
+
+(use-package rust-mode
+  :ensure t)
 
 (use-package sed-mode
   :ensure t)
