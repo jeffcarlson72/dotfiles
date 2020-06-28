@@ -162,10 +162,6 @@ There are two things you can do about this warning:
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
-	       (list "con"  (concat "#+BEGIN_SRC console\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
 	       (list "css"  (concat "#+BEGIN_SRC css\n"
 				    "?\n"
 				    "#+END_SRC")))
@@ -179,6 +175,10 @@ There are two things you can do about this warning:
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
 	       (list "js"   (concat "#+BEGIN_SRC js\n"
+				    "?\n"
+				    "#+END_SRC")))
+  (add-to-list 'org-structure-template-alist
+	       (list "m4"  (concat "#+BEGIN_SRC m4\n"
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
