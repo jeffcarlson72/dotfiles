@@ -103,6 +103,7 @@ There are two things you can do about this warning:
 (add-hook 'c-mode-common-hook   'hs-minor-mode)
 (add-hook 'c-mode-hook          'hs-minor-mode)
 (add-hook 'c++-mode-hook        'hs-minor-mode)
+(add-hook 'cfengine3-mode-hook	'hs-minor-mode)
 (add-hook 'css-mode-hook        'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 (add-hook 'fortran-mode-hook    'hs-minor-mode)
