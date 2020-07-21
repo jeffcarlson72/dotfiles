@@ -42,4 +42,5 @@ fi
 
 # Local Variables:
 # mode: shell-script
+# sh-shell: bash
 # End:
