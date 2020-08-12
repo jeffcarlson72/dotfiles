@@ -273,10 +273,14 @@ There are two things you can do about this warning:
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 3)
   (global-company-mode t))
-;; (use-package company-jedi
-;;   :ensure t
-;;   :config
-;;   (add-hook 'python-mode-hook 'jedi:setup))
+(use-package company-jedi
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook 'jedi:install-server)
+  (add-hook 'python-mode-hook
+	    (lambda () (add-to-list 'company-backends '(company-jedi
+							company-files)))))
 
 (use-package diminish
   :ensure t
