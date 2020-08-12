@@ -103,6 +103,7 @@ There are two things you can do about this warning:
 (add-hook 'c-mode-common-hook   'hs-minor-mode)
 (add-hook 'c-mode-hook          'hs-minor-mode)
 (add-hook 'c++-mode-hook        'hs-minor-mode)
+(add-hook 'cfengine3-mode-hook	'hs-minor-mode)
 (add-hook 'css-mode-hook        'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 (add-hook 'fortran-mode-hook    'hs-minor-mode)
@@ -162,10 +163,6 @@ There are two things you can do about this warning:
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
-	       (list "con"  (concat "#+BEGIN_SRC console\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
 	       (list "css"  (concat "#+BEGIN_SRC css\n"
 				    "?\n"
 				    "#+END_SRC")))
@@ -178,7 +175,15 @@ There are two things you can do about this warning:
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
-	       (list "js"   (concat "#+BEGIN_SRC js\n"
+	       (list "html" (concat "#+BEGIN_SRC html\n"
+				    "?\n"
+				    "#+END_SRC")))
+  (add-to-list 'org-structure-template-alist
+	       (list "go"   (concat "#+BEGIN_SRC go\n"
+				    "?\n"
+				    "#+END_SRC")))
+  (add-to-list 'org-structure-template-alist
+	       (list "m4"  (concat "#+BEGIN_SRC m4\n"
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
@@ -195,6 +200,10 @@ There are two things you can do about this warning:
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
 	       (list "rb"   (concat "#+BEGIN_SRC ruby\n"
+				    "?\n"
+				    "#+END_SRC")))
+  (add-to-list 'org-structure-template-alist
+	       (list "rs"   (concat "#+BEGIN_SRC rust\n"
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
@@ -292,6 +301,9 @@ There are two things you can do about this warning:
 (use-package htmlize
   :ensure t)
 
+(use-package go-mode
+  :ensure t)
+
 (use-package json-mode
   :ensure t
   :hook (json-mode . (lambda ()
@@ -326,6 +338,9 @@ There are two things you can do about this warning:
   :ensure t
   :config
   (powerline-center-theme))
+
+(use-package rust-mode
+  :ensure t)
 
 (use-package sed-mode
   :ensure t)
