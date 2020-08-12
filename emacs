@@ -41,6 +41,7 @@ There are two things you can do about this warning:
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(company-require-match nil)
  '(diff-switches "-u")
  '(dired-listing-switches "-al --group-directories-first")
  '(electric-pair-mode t)
@@ -51,26 +52,6 @@ There are two things you can do about this warning:
  '(ls-lisp-ignore-case nil)
  '(ls-lisp-use-string-collate nil)
  '(org-startup-indented t)
- '(package-selected-packages (quote (apache-mode
-				     beacon
-				     cfengine-mode
-				     color-theme-modern
-				     diminish
-				     helm
-				     htmlize
-				     json-mode
-				     magit
-				     markdown-mode
-				     markdown-preview-mode
-				     mmm-jinja2
-				     salt-mode
-				     ssh-config-mode
-				     terraform-mode
-				     try
-				     use-package
-				     yaml-mode
-				     yasnippet
-				     yasnippet-snippets)))
  '(require-final-newline t)
  '(safe-local-variable-values (quote ((c-file-style . stroustrup))))
  '(show-paren-mode t)
