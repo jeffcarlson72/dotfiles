@@ -309,6 +309,7 @@ There are two things you can do about this warning:
 (use-package multiple-cursors
   :ensure t
   :bind (("M-s m m" . mc/edit-lines)
+	 ("M-s m a" . mc/mark-all-like-this)
 	 ("M-s m n" . mc/mark-next-like-this)
 	 ("M-s m s" . mc/skip-to-next-like-this)
 	 ("M-s m u" . mc/unmark-next-like-this)))
