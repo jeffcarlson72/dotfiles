@@ -51,8 +51,24 @@ for LANG in $( locale -a | grep -w ^C ) ; do
     [ ${#LANG} -gt 1 ] && break
 done
 
+if [ mountpoint -q $HOME ] ; then
+    # HOME directory is shared between other nodes
+    XDG_CACHE_HOME=$HOME/.cache/${HOSTNAME%%.*}
+    XDG_CONFIG_HOME=$HOME/.config/${HOSTNAME%%.*}
+    XDG_DATA_HOME=$HOME/.local/share/${HOSTNAME%%.*}
+    #XDG_RUNTIME_DIR set by pam_systemd
+fi
+
 export ALTERNATE_EDITOR ANSIBLE_CONFIG BASH_ENV CLICOLOR CVS_RSH EDITOR \
-    HISTCONTROL HISTFILE HISTFILESIZE HISTIGNORE HISTSIZE LANG LESS PATH
+    HISTCONTROL HISTFILE HISTFILESIZE HISTIGNORE HISTSIZE LANG LESS PATH \
+    XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME XDG_RUNTIME_DIR
+
+[ -d ${XDG_CACHE_HOME:-$HOME/.cache} ] ||
+    mkdir ${XDG_CACHE_HOME:-$HOME/.cache}
+[ -d ${XDG_CONFIG_HOME:-$HOME/.config} ] ||
+    mkdir ${XDG_CONFIG_HOME:-$HOME/.config}
+[ -d ${XDG_DATA_HOME:-$HOME/.local/share} ] ||
+    mkdir ${XDG_DATA_HOME:-$HOME/.local/share}
 
 if [ -d $HOME/.local/lib/bash ] ; then
     for i in $HOME/.local/lib/bash/*.sh ; do
