@@ -257,11 +257,21 @@ There are two things you can do about this warning:
 (use-package company-jedi
   :ensure t
   :config
+  (require 'company)
   (add-hook 'python-mode-hook 'jedi:setup)
   (add-hook 'python-mode-hook 'jedi:install-server)
+  (add-hook 'python-mode-hook 'python-mode-company-init)
   (add-hook 'python-mode-hook
-	    (lambda () (add-to-list 'company-backends '(company-jedi
-							company-files)))))
+	    (lambda ()
+	      (add-to-list 'company-backends '(company-jedi
+					       company-files
+					       company-etags
+					       company-dabbrev-code)))))
+(use-package company-shell
+  :ensure t
+  :config
+  (require 'company)
+  (add-hook 'shell-mode-hook 'shell-mode-company-init))
 
 (use-package diminish
   :ensure t
@@ -275,6 +285,10 @@ There are two things you can do about this warning:
 
 (use-package helm
   :ensure t
+  :bind
+  ("C-x C-b" . 'helm-buffers-list)
+  ("C-x C-f" . 'helm-find-files)
+  ("M-x"     . 'helm-M-x)
   :diminish
   :config
   (require 'helm-config)
