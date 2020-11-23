@@ -328,6 +328,11 @@ There are two things you can do about this warning:
 	 ("M-s m s" . mc/skip-to-next-like-this)
 	 ("M-s m u" . mc/unmark-next-like-this)))
 
+(use-package mustache
+  :ensure t)
+(use-package mustache-mode
+  :ensure t)
+
 (use-package org-download
   :ensure t)
 
