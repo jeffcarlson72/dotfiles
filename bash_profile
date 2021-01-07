@@ -50,6 +50,7 @@ fi
 for LANG in $( locale -a | grep -w ^C ) ; do
     [ ${#LANG} -gt 1 ] && break
 done
+[ "$LANG" == "C.utf8" ] && LANG=C.UTF-8
 
 if mountpoint -q $HOME ; then
     # HOME directory is shared between other nodes
