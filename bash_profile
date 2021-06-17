@@ -23,7 +23,11 @@ LESS=-MR
 PATH=$PATH:$HOME/bin
 
 case `uname -s` in
-    Darwin|FreeBSD|NetBSD)
+    Darwin)
+	BASH_SILENCE_DEPRECATION_WARNING=1
+	CLICOLOR=1
+	;;
+    FreeBSD|NetBSD)
 	CLICOLOR=1
 	;;
 esac
@@ -52,7 +56,7 @@ for LANG in $( locale -a | grep -w ^C ) ; do
 done
 [ "$LANG" == "C.utf8" ] && LANG=C.UTF-8
 
-if mountpoint -q $HOME ; then
+if [ "$BASH_SILENCE_DEPRECATION_WARNING" -ne 1 ] && mountpoint -q $HOME ; then
     # HOME directory is shared between other nodes
     XDG_CACHE_HOME=$HOME/.cache/${HOSTNAME%%.*}
     XDG_CONFIG_HOME=$HOME/.config/${HOSTNAME%%.*}
