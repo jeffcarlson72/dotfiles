@@ -25,6 +25,7 @@ if [ "`type -t dir`" == "file" ] ; then
     alias dir='dir --group-directories-first --color=auto'
     alias vdir='vdir --group-directories-first --color=auto'
 fi
+alias kpcli="kpcli --kdb Passwords.kdbx --key Passwords.key"
 
 shopt -s extglob      		# regex-like shell globs -- [!@*+?](pattern)
 shopt -s lithist      		# whitespace in shell history
