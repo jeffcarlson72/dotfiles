@@ -44,6 +44,7 @@ There are two things you can do about this warning:
  '(company-require-match nil)
  '(diff-switches "-u")
  '(dired-listing-switches "-al --group-directories-first")
+ '(display-fill-column-indicator-column 80)
  '(electric-pair-mode t)
  '(electric-quote-mode nil)
  '(kill-do-not-save-duplicates t)
@@ -78,6 +79,8 @@ There are two things you can do about this warning:
 (put 'narrow-to-region 'disabled nil)
 (scroll-bar-mode 0)
 (windmove-default-keybindings)
+
+(setq-default abbrev-mode t)
 
 (add-hook 'awk-mode-hook        'hs-minor-mode)
 (add-hook 'bibtex-mode-hook     'hs-minor-mode)
@@ -223,6 +226,10 @@ There are two things you can do about this warning:
 (use-package all-the-icons
   :ensure t)
 ;; M-x all-the-icons-install-fonts
+(use-package all-the-icons-dired
+  :ensure t
+  :init
+  (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 
 (use-package apache-mode
   :ensure t)
@@ -488,3 +495,23 @@ There are two things you can do about this warning:
 ;; Local Variables:
 ;; mode: emacs-lisp
 ;; End:
+
+;; apache-mode
+;; bar-cursor
+;; bm
+;; boxquote
+;; browse-kill-ring
+;; color-theme-modern
+;; csv-mode
+;; diminish
+;; eproject
+;; folding
+;; graphviz-dot-mode
+;; htmlize
+;; initsplit
+;; markdown-mode
+;; mutt-alias
+;; muttrc-mode
+;; pod-mode
+;; session
+;; tabbar
