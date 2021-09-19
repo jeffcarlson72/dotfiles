@@ -152,19 +152,23 @@ There are two things you can do about this warning:
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
-	       (list "html" (concat "#+BEGIN_SRC html\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "html" (concat "#+BEGIN_SRC html\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
 	       (list "go"   (concat "#+BEGIN_SRC go\n"
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
-	       (list "m4"  (concat "#+BEGIN_SRC m4\n"
+	       (list "html" (concat "#+BEGIN_SRC html\n"
+				    "?\n"
+				    "#+END_SRC")))
+  (add-to-list 'org-structure-template-alist
+	       (list "js"   (concat "#+BEGIN_SRC js\n"
+				    "?\n"
+				    "#+END_SRC")))
+  (add-to-list 'org-structure-template-alist
+	       (list "json" (concat "#+BEGIN_SRC json\n"
+				    "?\n"
+				    "#+END_SRC")))
+  (add-to-list 'org-structure-template-alist
+	       (list "m4"   (concat "#+BEGIN_SRC m4\n"
 				    "?\n"
 				    "#+END_SRC")))
   (add-to-list 'org-structure-template-alist
