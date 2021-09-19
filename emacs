@@ -88,6 +88,7 @@ There are two things you can do about this warning:
 (add-hook 'css-mode-hook        'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 (add-hook 'fortran-mode-hook    'hs-minor-mode)
+(add-hook 'html-mode            'hs-minor-mode)
 (add-hook 'java-mode-hook       'hs-minor-mode)
 (add-hook 'js-mode-hook         'hs-minor-mode)
 (add-hook 'json-mode-hook       'hs-minor-mode)
@@ -101,6 +102,7 @@ There are two things you can do about this warning:
 (add-hook 'sh-mode-hook         'hs-minor-mode)
 (add-hook 'tcl-mode-hook        'hs-minor-mode)
 (add-hook 'vhdl-mode-hook       'hs-minor-mode)
+(add-hook 'yaml-mode            'hs-minor-mode)
 
 (require 'tramp)
 (if (memq system-type '(windows-nt ms-dos)) ;; fml
