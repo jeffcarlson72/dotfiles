@@ -27,6 +27,11 @@ fi
 if [ "`type -t dir`" == "file" ] ; then
     alias dir='dir --group-directories-first --color=auto'
     alias vdir='vdir --group-directories-first --color=auto'
+else
+    # In case of BSD, which does not have an option to list
+    # directories first
+    alias dir='ls'
+    alias vdir='ls -l'
 fi
 alias kpcli="kpcli --kdb Passwords.kdbx --key Passwords.key"
 
