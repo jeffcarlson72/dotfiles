@@ -30,6 +30,9 @@ case `uname -s` in
     FreeBSD|NetBSD)
 	CLICOLOR=1
 	;;
+    OpenBSD)
+	[ -x "/usr/local/bin/colorls" ] && CLICOLOR=1
+	;;
 esac
 
 if [ "`type -t emacs`" == 'file' ] ; then

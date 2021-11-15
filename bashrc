@@ -21,6 +21,9 @@ fi
 alias cp='cp -ip'
 alias mv='mv -i'
 alias rm='rm -i'
+if [ `uname -s` == 'OpenBSD' -a -x '/usr/local/bin/colorls' ] ; then
+    alias ls='colorls'
+fi
 if [ "`type -t dir`" == "file" ] ; then
     alias dir='dir --group-directories-first --color=auto'
     alias vdir='vdir --group-directories-first --color=auto'
