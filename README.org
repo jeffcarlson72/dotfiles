@@ -23,6 +23,23 @@ On my workstation, there are generally four programs I always run
 whenever I log in:  a terminal (which runs bash), Firefox, Thunderbird,
 and Emacs.
 
+** gitconfig
+
+I don't typically copy a =.gitconfig= in place.  Instead I just enter
+these commands in the shell.
+
+#+BEGIN_SRC shell
+  git config --global user.name 'Jeff Carlson'
+  git config --global user.email 'my email address'
+  git config --global alias.ci 'commit -a'
+  git config --global alias.co 'checkout'
+  git config --global alias.last 'log -1 HEAD'
+  git config --global alias.long 'log --graph --pretty=full --all --color --stat'
+  git config --global alias.prune 'branch -d'
+  git config --global alias.remaster 'pull origin master'
+  git config --global alias.unstage 'reset HEAD --'
+#+END_SRC
+
 ** bash_profile
 
 This started life as the stock file shipped from RedHat Linux,
@@ -119,7 +136,7 @@ Emacs extensions and so I recently began incorporating many of them
 into my own Emacs configuration.
 
 Just as Perl has CPAN and Python has pip (we could go on a while with
-this), Emacs has [[elpa.gnu.org][ELPA]] -- the Emacs Lisp Package Archive.  And there
+this), Emacs has [[http://elpa.gnu.org][ELPA]] -- the Emacs Lisp Package Archive.  And there
 are a few other archives worth knowing about, specifically [[http://melpa.org/#/][MELPA]] --
 Milkypostman's ELPA.  The beginning code sets up MELPA, which is kind
 of the bleeding-edge repository built mostly from recent Git commits,
