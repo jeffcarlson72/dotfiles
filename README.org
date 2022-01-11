@@ -206,3 +206,36 @@ emulate Emacs.
 
 There aren't that many settings for mg.  I only found a couple I
 thought were worth while.
+
+** muttrc
+
+I have multiple IMAP accounts, but I like Mutt to work the same way on
+all of them.  I don't access all of them from the same instance of
+Mutt.  Therefore, this is the base config, and each of my
+accounts is accessed as follows.
+
+First, create the directory for mutt configs.
+
+#+BEGIN_SRC shell
+  mkdir ~/.mutt
+#+END_SRC
+
+Second is to set up a new config in that directory for each of the
+accounts.  Each one should include the top-level =.muttrc=.
+
+#+BEGIN_SRC conf-space
+  source ~/.muttrc
+#+END_SRC
+
+Finally, add aliases to a resource file, perhaps
+=~/.local/lib/bash/mail.sh=.
+
+#+BEGIN_SRC shell
+  # -*- shell-script -*-
+
+  alias mail1="mutt -F ~/.mutt/mail1"
+  alias mail2="mutt -F ~/.mutt/mail2"
+#+END_SRC
+
+This will get sourced in my =.bashrc= and I just type the name of the
+account to access it.
