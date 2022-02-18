@@ -59,7 +59,7 @@ for LANG in $( locale -a | grep -w ^C ) ; do
 done
 [ "$LANG" == "C.utf8" ] && LANG=C.UTF-8
 
-if [ "$BASH_SILENCE_DEPRECATION_WARNING" -ne 1 ] && mountpoint -q $HOME ; then
+if [ "$BASH_SILENCE_DEPRECATION_WARNING" != "1" ] && mountpoint -q $HOME ; then
     # HOME directory is shared between other nodes
     XDG_CACHE_HOME=$HOME/.cache/${HOSTNAME%%.*}
     XDG_CONFIG_HOME=$HOME/.config/${HOSTNAME%%.*}
