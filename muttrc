@@ -1,0 +1,46 @@
+# -*- conf-space -*-
+
+set crypt_autosign
+set date_format="%y-%m-%d %T"
+set editor = "emacsclient -t"
+set fast_reply
+set header_cache = "~/.mutt/cache/"
+set imap_check_subscribed
+#set imap_list_subscribed
+set include = yes
+set menu_scroll
+set move = no
+set pager_stop
+set postponed = "+Drafts"
+set record = "+Sent"
+set query_command = "abook --mutt-query '%s'"
+set imap_pipeline_depth = 60 # defualt is 15
+set mail_check_stats
+set sidebar_visible
+set sidebar_folder_indent
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_indent_string = "  "
+set sidebar_sort_method = alpha
+set sidebar_short_path
+set sidebar_width = 35
+set sort=threads
+set sort_aux=last-date-received
+
+bind index,pager B sidebar-toggle-visible
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+bind index,pager \CP sidebar-prev
+
+macro index a   "|abook --add-email\n" 'add sender to abook'
+macro pager a   "|abook --add-email\n" 'add sender to abook'
+macro generic,index,pager \ca "<shell-escape>abook<return>" "launch abook"
+macro index \cb "|urlview\n"
+macro pager \cb "|urlview\n"
+
+ignore *
+unignore date
+unignore from
+unignore to
+unignore cc
+unignore subject
+hdr_order Date: To: Cc: From: Subject:
