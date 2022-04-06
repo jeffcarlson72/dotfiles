@@ -81,7 +81,7 @@ There are two things you can do about this warning:
 (scroll-bar-mode 0)
 (windmove-default-keybindings)
 (when (>= emacs-major-version 27)
-      (global-display-fill-column-mode 1))
+      (global-display-fill-column-indicator-mode 1))
 
 ;; Shift-PageUp or Shift-PageDown makes the buffer scroll by one line
 ;; at a time.  Modified from example by Emacs Elements.
@@ -101,21 +101,26 @@ There are two things you can do about this warning:
 (add-hook 'css-mode-hook        'hs-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 (add-hook 'fortran-mode-hook    'hs-minor-mode)
-(add-hook 'html-mode            'hs-minor-mode)
+(add-hook 'go-mode-hook         'hs-minor-mode)
+(add-hook 'html-mode-hook       'hs-minor-mode)
+(add-hook 'idl-mode-hook        'hs-minor-mode)
 (add-hook 'java-mode-hook       'hs-minor-mode)
 (add-hook 'js-mode-hook         'hs-minor-mode)
 (add-hook 'json-mode-hook       'hs-minor-mode)
 (add-hook 'lisp-mode-hook       'hs-minor-mode)
+(add-hook 'objc-mode-hook       'hs-minor-mode)
 (add-hook 'perl-mode-hook       'hs-minor-mode)
 (add-hook 'php-mode-hook        'hs-minor-mode)
+(add-hook 'pike-mode-hook       'hs-minor-mode)
 (add-hook 'python-mode-hook     'hs-minor-mode)
 (add-hook 'ruby-mode-hook       'hs-minor-mode)
 (add-hook 'sed-mode-hook        'hs-minor-mode)
 (add-hook 'scheme-mode-hook     'hs-minor-mode)
 (add-hook 'sh-mode-hook         'hs-minor-mode)
 (add-hook 'tcl-mode-hook        'hs-minor-mode)
+(add-hook 'terraform-mode-hook  'hs-minor-mode)
 (add-hook 'vhdl-mode-hook       'hs-minor-mode)
-(add-hook 'yaml-mode            'hs-minor-mode)
+(add-hook 'yaml-mode-hook       'hs-minor-mode)
 
 (require 'tramp)
 (if (memq system-type '(windows-nt ms-dos)) ;; fml
