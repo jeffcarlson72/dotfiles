@@ -80,6 +80,13 @@ There are two things you can do about this warning:
 (scroll-bar-mode 0)
 (windmove-default-keybindings)
 
+;; Shift-PageUp or Shift-PageDown makes the buffer scroll by one line
+;; at a time.  Modified from example by Emacs Elements.
+(global-set-key (kbd "S-<prior>")
+		(kbd "C-u 1 M-v"))
+(global-set-key (kbd "S-<next>")
+		(kbd "C-u 1 C-v"))
+
 (setq-default abbrev-mode t)
 
 (add-hook 'awk-mode-hook        'hs-minor-mode)
