@@ -79,6 +79,8 @@ There are two things you can do about this warning:
 (put 'narrow-to-region 'disabled nil)
 (scroll-bar-mode 0)
 (windmove-default-keybindings)
+(when (>= emacs-major-version 27)
+      (global-display-fill-column-mode 1))
 
 ;; Shift-PageUp or Shift-PageDown makes the buffer scroll by one line
 ;; at a time.  Modified from example by Emacs Elements.
