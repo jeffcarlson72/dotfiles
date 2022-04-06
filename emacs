@@ -47,6 +47,7 @@ There are two things you can do about this warning:
  '(display-fill-column-indicator-column 80)
  '(electric-pair-mode t)
  '(electric-quote-mode nil)
+ '(global-hi-lock-mode 1) ;; https://www.emacswiki.org/emacs/HiLock
  '(kill-do-not-save-duplicates t)
  '(line-number-mode t)
  '(ls-lisp-dirs-first t)
