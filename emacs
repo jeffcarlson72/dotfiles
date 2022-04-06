@@ -501,6 +501,42 @@ There are two things you can do about this warning:
 			       (typescript	. nil)
 			       (vala		. nil)))
 
+(defface hi-red-on-black
+  '((((background dark)) (:background "black" :foreground "red"))
+    (t (:background "black")))
+  "Face for hi-lock mode."
+  :group 'hi-lock-faces)
+(defface hi-green-on-black
+  '((((background dark)) (:background "black" :foreground "green"))
+    (t (:background "black")))
+  "Face for hi-lock mode."
+  :group 'hi-lock-faces)
+(defface hi-yellow-on-black
+  '((((background dark)) (:background "black" :foreground "yellow"))
+    (t (:background "black")))
+  "Face for hi-lock mode."
+  :group 'hi-lock-faces)
+(defface hi-blue-on-black
+  '((((background dark)) (:background "black" :foreground "blue"))
+    (t (:background "black")))
+  "Face for hi-lock mode."
+  :group 'hi-lock-faces)
+(defface hi-violet-on-black
+  '((((background dark)) (:background "black" :foreground "violet"))
+    (t (:background "black")))
+  "Face for hi-lock mode."
+  :group 'hi-lock-faces)
+(defface hi-cyan-on-black
+  '((((background dark)) (:background "black" :foreground "cyan"))
+    (t (:background "black")))
+  "Face for hi-lock mode."
+  :group 'hi-lock-faces)
+(defface hi-white-on-black
+  '((((background dark)) (:background "black" :foreground "white"))
+    (t (:background "black")))
+  "Face for hi-lock mode."
+  :group 'hi-lock-faces)
+
 ;; Last thing, load local config
 (when (file-exists-p "~/.emacs.d/local.el")
   (load-file "~/.emacs.d/local.el"))
