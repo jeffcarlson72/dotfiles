@@ -260,7 +260,7 @@ There are two things you can do about this warning:
   (setenv "LC_COLLATE" "C")
   (require 'ls-lisp))
 
-(use-package emmet
+(use-package emmet-mode
   :ensure t)
 
 (use-package helm
