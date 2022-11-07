@@ -147,91 +147,39 @@ There are two things you can do about this warning:
   (server-start))
 
 ;; org-mode begin
-(with-eval-after-load "org"
-  (add-to-list 'org-structure-template-alist
-	       (list "awk"  (concat "#+BEGIN_SRC awk\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "cc"   (concat "#+BEGIN_SRC c\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "cfe"  (concat "#+BEGIN_SRC cfengine\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "cl"   (concat "#+BEGIN_SRC lisp\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "css"  (concat "#+BEGIN_SRC css\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "el"   (concat "#+BEGIN_SRC emacs-lisp\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "go"   (concat "#+BEGIN_SRC go\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "html" (concat "#+BEGIN_SRC html\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "js"   (concat "#+BEGIN_SRC js\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "json" (concat "#+BEGIN_SRC json\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "m4"   (concat "#+BEGIN_SRC m4\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "php"  (concat "#+BEGIN_SRC php\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "pl"   (concat "#+BEGIN_SRC perl\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "py"   (concat "#+BEGIN_SRC python\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "rb"   (concat "#+BEGIN_SRC ruby\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "rs"   (concat "#+BEGIN_SRC rust\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "sed"  (concat "#+BEGIN_SRC sed\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "sh"   (concat "#+BEGIN_SRC shell\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "sql"  (concat "#+BEGIN_SRC sql\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "tex"  (concat "#+BEGIN_SRC latex\n"
-				    "?\n"
-				    "#+END_SRC")))
-  (add-to-list 'org-structure-template-alist
-	       (list "yml"  (concat "#+BEGIN_SRC yaml\n"
-				    "?\n"
-				    "#+END_SRC"))))
+(require 'org-tempo) ;; enable <s TAB
+(setq org-structure-template-alist
+      '(("awk"  . "src awk\n")
+	("cc"   . "src c\n")
+	("cfe"  . "src cfe\n")
+	("cl"   . "src cl\n")
+	("css"  . "src css\n")
+	("el"   . "src el\n")
+	("go"   . "src go\n")
+	("html" . "src html\n")
+	("json" . "src json\n")
+	("m4"   . "src m4\n")
+	("php"  . "src php\n")
+	("pl"   . "src pl\n")
+	("py"   . "src py\n")
+	("rb"   . "src rb\n")
+	("rs"   . "src rs\n")
+	("sed"  . "src sed\n")
+	("sh"   . "src sh\n")
+	("sql"  . "src sql\n")
+	("tex"  . "src tex\n")
+	("xml"  . "src xml\n")
+	("yml"  . "src yml\n")
+	("a"    . "export ascii\n")
+	("c"    . "center\n")
+	("C"    . "comment\n")
+	("e"    . "example\n")
+	("E"    . "export\n")
+	("h"    . "export html\n")
+	("l"    . "export latex\n")
+	("q"    . "quote\n")
+	("s"    . "src\n")
+	("v"    . "verse\n")))
 ;; org-mode end
 
 (unless (package-installed-p 'use-package)
