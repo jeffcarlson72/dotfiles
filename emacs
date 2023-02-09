@@ -283,6 +283,9 @@ There are two things you can do about this warning:
 (use-package go-mode
   :ensure t)
 
+(use-package jinja2-mode
+  :ensure t)
+
 (use-package json-mode
   :ensure t
   :hook (json-mode . (lambda ()
