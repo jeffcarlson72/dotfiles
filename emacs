@@ -49,7 +49,10 @@ There are two things you can do about this warning:
  '(electric-quote-mode nil)
  '(exec-path (append exec-path '("/usr/local/bin")))
  '(global-hi-lock-mode 1) ;; https://www.emacswiki.org/emacs/HiLock
+ '(isearch-lazy-count t)
  '(kill-do-not-save-duplicates t)
+ ;; '(lazy-count-prefix-format "(%s/%s) ")
+ ;; '(lazy-count-suffix-format nil)
  '(line-number-mode t)
  '(ls-lisp-dirs-first t)
  '(ls-lisp-ignore-case nil)
