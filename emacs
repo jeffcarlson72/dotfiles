@@ -154,25 +154,25 @@ There are two things you can do about this warning:
 (setq org-structure-template-alist
       '(("awk"  . "src awk\n")
 	("cc"   . "src c\n")
-	("cfe"  . "src cfe\n")
-	("cl"   . "src cl\n")
+	("cfe"  . "src cfengine3\n")
+	("cl"   . "src lisp\n")
 	("css"  . "src css\n")
-	("el"   . "src el\n")
+	("el"   . "src emacs-lisp\n")
 	("go"   . "src go\n")
 	("html" . "src html\n")
 	("json" . "src json\n")
 	("m4"   . "src m4\n")
 	("php"  . "src php\n")
-	("pl"   . "src pl\n")
-	("py"   . "src py\n")
-	("rb"   . "src rb\n")
-	("rs"   . "src rs\n")
+	("pl"   . "src perl\n")
+	("py"   . "src python\n")
+	("rb"   . "src ruby\n")
+	("rs"   . "src rust\n")
 	("sed"  . "src sed\n")
-	("sh"   . "src sh\n")
+	("sh"   . "src shell\n")
 	("sql"  . "src sql\n")
-	("tex"  . "src tex\n")
+	("tex"  . "src latex\n")
 	("xml"  . "src xml\n")
-	("yml"  . "src yml\n")
+	("yml"  . "src yaml\n")
 	("a"    . "export ascii\n")
 	("c"    . "center\n")
 	("C"    . "comment\n")
@@ -353,6 +353,9 @@ There are two things you can do about this warning:
 	([f8] . treemacs)))
 
 (use-package try
+  :ensure t)
+
+(use-package vterm
   :ensure t)
 
 (use-package which-key
