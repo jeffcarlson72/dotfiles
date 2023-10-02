@@ -330,6 +330,11 @@ There are two things you can do about this warning:
   :config
   (powerline-center-theme))
 
+(use-package rg
+  :ensure t
+  :config
+  (rg-enable-default-bindings))
+
 (use-package rust-mode
   :ensure t)
 
@@ -357,6 +362,12 @@ There are two things you can do about this warning:
 
 (use-package vterm
   :ensure t)
+(use-package eshell-vterm
+  :ensure t
+  :after eshell
+  :config
+  (eshell-vterm-mode))
+(defalias 'eshell/v 'eshell-exec-visual)
 
 (use-package which-key
   :ensure t
