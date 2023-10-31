@@ -88,7 +88,9 @@ There are two things you can do about this warning:
 (scroll-bar-mode 0)
 (windmove-default-keybindings)
 (when (>= emacs-major-version 27)
-      (global-display-fill-column-indicator-mode 1))
+  (global-display-fill-column-indicator-mode 1))
+(when (>= emacs-major-version 19)
+  (xterm-mouse-mode 1))
 
 ;; Shift-PageUp or Shift-PageDown makes the buffer scroll by one line
 ;; at a time.  Modified from example by Emacs Elements.
