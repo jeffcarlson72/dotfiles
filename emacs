@@ -275,9 +275,11 @@ There are two things you can do about this warning:
   :ensure t
   :bind
   ("C-x C-b" . 'helm-buffers-list)
+  ("C-x b"   . 'helm-mini)
   ("C-x C-f" . 'helm-find-files)
   ("M-x"     . 'helm-M-x)
   :diminish
+  :pin nongnu
   :config
   (require 'helm-config)
   (helm-mode))
