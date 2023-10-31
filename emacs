@@ -271,7 +271,8 @@ There are two things you can do about this warning:
 (use-package emmet-mode
   :ensure t
   :config
-  (add-hook 'html-mode-hook 'emmet-mode))
+  (add-hook 'html-mode-hook 'emmet-mode)
+  :diminish)
 
 (use-package helm
   :ensure t
