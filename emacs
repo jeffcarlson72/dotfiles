@@ -269,7 +269,9 @@ There are two things you can do about this warning:
   (require 'ls-lisp))
 
 (use-package emmet-mode
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'html-mode-hook 'emmet-mode))
 
 (use-package helm
   :ensure t
