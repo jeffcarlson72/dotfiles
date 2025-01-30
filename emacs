@@ -223,9 +223,8 @@ There are two things you can do about this warning:
   ;; Installs automatically with cfengine package
   :config
   (autoload 'cfengine-mode "cfengine" "cfengine editing" t)
-  (add-hook 'cfengine3-mode-hook
-            (lambda ()
-              (setq indent-tabs-mode nil)))
+  (progn
+    (setq indent-tabs-mode nil))
   (add-to-list 'load-path "~/.emacs.d/lisp/")
   (add-to-list 'auto-mode-alist '("\\.cf\\'" . cfengine3-mode)))
 
