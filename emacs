@@ -218,14 +218,16 @@ There are two things you can do about this warning:
   :config
   (beacon-mode t))
 
-(use-package cfengine
+(use-package cfengine3
   ;; https://raw.github.com/cfengine/core/master/contrib/cfengine.el
   ;; Installs automatically with cfengine package
   :config
   (autoload 'cfengine-mode "cfengine" "cfengine editing" t)
-  (setq indent-tabs-mode nil)
+  (add-hook 'cfengine3-mode-hook
+            (lambda ()
+              (setq indent-tabs-mode nil)))
   (add-to-list 'load-path "~/.emacs.d/lisp/")
-  (add-to-list 'auto-mode-alist '("\\.cf\\'" . cfengine-mode)))
+  (add-to-list 'auto-mode-alist '("\\.cf\\'" . cfengine3-mode)))
 
 (use-package color-theme-modern
   :ensure t
@@ -316,6 +318,40 @@ There are two things you can do about this warning:
   :ensure t)
 (use-package markdown-preview-mode
   :ensure t)
+
+;;; packages that do things in the minibuffer
+
+;; (use-package vertico
+;;   :ensure t
+;;   :config
+;;   (setq vertico-cycle t)
+;;   (setq vertico-resize nil)
+;;   (vertico-mode 1))
+;; (use-package marginalia
+;;   :ensure t
+;;   :config
+;;   (marginalia-mode 1))
+;; (use-package orderless
+;;   :ensure t
+;;   :config
+;;   (setq completion-styles '(orderless basic)))
+;; (use-package consult
+;;   :ensure t
+;;   :bind (("M-s M-g" . consult-grep)
+;; 	 ("M-s M-f" . consult-find)
+;; 	 ("M-s M-o" . consult-outline)
+;; 	 ("M-s M-l" . consult-line)
+;; 	 ("M-s M-b" . consult-buffer)))
+;; (use-package embark
+;;   :ensure t
+;;   :bind (("C-." . embark-act)
+;; 	 :map minibuffer-local-map
+;; 	 ("C-c C-c" . embark-collect)
+;; 	 ("C-c C-c" . embark-export)))
+;; (use-package embark-consult
+;;   :ensure t)
+
+;;; contine
 
 (use-package multiple-cursors
   :ensure t
