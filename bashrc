@@ -39,6 +39,8 @@ if [ -n "$WEZTERM_PANE" ] ; then
     alias imgcat="flatpak run org.wezfurlong.wezterm imgcat"
 fi
 
+alias vi="emacsclent"
+
 shopt -s extglob      		# regex-like shell globs -- [!@*+?](pattern)
 shopt -s lithist      		# whitespace in shell history
 if [ ${BASH_VERSINFO[0]} -gt 3 ] ; then
