@@ -24,7 +24,7 @@ alias rm='rm -i'
 if [ `uname -s` == 'OpenBSD' -a -x '/usr/local/bin/colorls' ] ; then
     alias ls='colorls'
 fi
-if [ "`type -t dir`" == "file" ] ; then
+if [ "`type -t dir`" == 'file' ] ; then
     alias dir='dir --group-directories-first --color=auto'
     alias vdir='vdir --group-directories-first --color=auto'
 else
@@ -33,13 +33,18 @@ else
     alias dir='ls'
     alias vdir='ls -l'
 fi
-alias kpcli="kpcli --kdb Passwords.kdbx --key Passwords.key"
-
-if [ -n "$WEZTERM_PANE" ] ; then
-    alias imgcat="flatpak run org.wezfurlong.wezterm imgcat"
+if [ "`type -f kpcli`" == 'file' ] ; then
+    alias kpcli='kpcli --kdb Passwords.kdbx --key Passwords.key'
 fi
-
-alias vi="emacsclient"
+if [ -n "$WEZTERM_PANE" ] ; then
+    alias imgcat='flatpak run org.wezfurlong.wezterm imgcat'
+fi
+if [ "`type -t emacsclient`" == 'file' ] ; then
+    alias vi='emacsclient'
+fi
+if [ "`type -t minikube`" == 'file' -a "`type -t kubectl`" != 'file' ] ; then
+    alias kubectl='minikube kubectl --'
+fi
 
 shopt -s extglob      		# regex-like shell globs -- [!@*+?](pattern)
 shopt -s lithist      		# whitespace in shell history
