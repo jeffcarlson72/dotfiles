@@ -30,8 +30,8 @@ if [ "`type -t dir`" == 'file' ] ; then
 else
     # In case of BSD, which does not have an option to list
     # directories first
-    alias dir='ls'
-    alias vdir='ls -l'
+    alias dir='ls -Cb'
+    alias vdir='ls -lb'
 fi
 if [ "`type -f kpcli`" == 'file' ] ; then
     alias kpcli='kpcli --kdb Passwords.kdbx --key Passwords.key'
